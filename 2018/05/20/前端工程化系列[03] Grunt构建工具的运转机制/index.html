@@ -1,0 +1,67 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> 前端工程化系列[03]-Grunt构建工具的运转机制 · 花田半亩</title><meta name="description" content="前端工程化系列[03]-Grunt构建工具的运转机制 - 文顶顶"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="/logo.jpeg"><link rel="stylesheet" href="/css/apollo.css"><link rel="search" type="application/opensearchdescription+xml" href="https://weibo.com/u/3800117445/atom.xml" title="花田半亩"><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="花田半亩" type="application/atom+xml">
+</head><body><div class="wrap"><header><a href="/" class="logo-link"><img src="/%E9%B2%B8%E9%B1%BC.png" alt="logo"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">文顶顶</a></li><li class="nav-list-item"><a href="/tags/" target="_self" class="nav-list-link">标签</a></li><li class="nav-list-item"><a href="/tool/" target="_self" class="nav-list-link">工具</a></li><li class="nav-list-item"><a href="https://www.cnblogs.com/wendingding/" target="_blank" class="nav-list-link">博客园</a></li><li class="nav-list-item"><a href="https://github.com/flowerField" target="_blank" class="nav-list-link">GITHUB</a></li></ul></header><main class="container"><div class="post"><article class="post-block"><h1 class="post-title">前端工程化系列[03]-Grunt构建工具的运转机制</h1><div class="post-info">May 20, 2018<span class="post-count"></span> ✧ 字数统计:1.6k(字) &nbsp;&nbsp; ♨︎ 阅读时长:5(分钟)</div><div class="post-content"><blockquote>
+<p>在<a target="_blank" rel="noopener" href="http://wendingding.com/2018/05/18/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96%E7%B3%BB%E5%88%97[02]%20Grunt%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8/">前端工程化系列[02]-Grunt构建工具的基本使用</a>这篇文章中，已经对Grunt做了简单的介绍，此外，我们还知道了该如何来安装Grunt环境，以及使用一些常见的插件了，这篇文章主要介绍Grunt的核心组件和运转机制。</p>
+</blockquote>
+<p>Grunt是一套前端自动化构建工具，可以帮助我们简化开发中需要反复处理的任务，甚至可以实现自动构建等功能。</p>
+<p>Grunt拥有数量庞大的插件，这些插件能够帮助我们处理开发中遇到的绝大多数构建任务，比如代码的预编译、压缩、代码检查、单元测试等。但为什么在终端输入Grunt相关命令，就能够执行对应的任务，Grunt到底是怎么运转的？这些知识对于深入研究Grunt非常重要,下面我们从Grunt运转的组件和运转机制两方面来展开讨论。</p>
+<h3 id="2-1-Grunt的核心组件"><a href="#2-1-Grunt的核心组件" class="headerlink" title="2.1  Grunt的核心组件"></a>2.1  Grunt的核心组件</h3><p><strong><span style='color:#f25'>node和npm</span></strong></p>
+<p>Grunt项目基于Node.js，Grunt和相关的插件都通过 npm 安装并管理。</p>
+<p><strong><span style='color:#f25'>Grunt-cli</span></strong></p>
+<p> <span style='color:#195'>Grunt命令行用于调用与Gruntfile文件在同一目录中的 Grunt模块</span>，通过<code>-g</code>参数把Grunt命令行安装到全局环境中，这样的话在所有文件目录中都可以调用grunt相关的命令。</p>
+<p>在命令行中运行Grunt 相关命令时(比如 <code>$grunt default</code>)，内部会根据node提供的require系统查找来当前目录中安装的 Grunt，如果找到那么加载，并把加载的grunt作为参数传递到Gruntfile文件中，然后执行指定的任务。</p>
+<p><strong><span style='color:#f25'>Task</span></strong></p>
+<p>Task就是任务的意思，grunt支持自定义任务，也支持使用现成的插件任务。比如向控制台输出一句问候这可以被认为是一个Task，对所有的js文件进行压缩这也是一个Task，通常任务(Task)都是可配置的。</p>
+<p><strong><span style='color:#f25'>Grunt本地依赖</span></strong></p>
+<p>安装了grunt命令行不等于就安装了grunt，这只是让我们拥有了在命令行中使用grunt相关命令的能力，对于每个需要使用grunt的工程，仍然需要为其配置grunt本地依赖。</p>
+<p><strong><span style='color:#f25'>Grunt插件(Plugins)</span></strong></p>
+<p><span style='color:#195'>Grunt插件是一系列能够用于不同项目的可配置任务的集合。</span>Grunt插件通常以npm包的形式发布。<a target="_blank" rel="noopener" href="https://gruntjs.com/plugins">Grunt官网的插件列表</a>列出了所有可用的Grunt插件，截止当前的插件数量为6,393个，其中带有contrib前缀的插件由Grunt官方开发和维护。</p>
+<p><strong><span style='color:#f25'>package.json文件</span></strong></p>
+<p><span style='color:#195'>package.json文件用于被npm存储项目的元数据，以便将此项目发布为npm模块。</span>我们可以在此文件中列出项目依赖的Grunt和Grunt插件，保存在devDependencies（开发依赖）配置字段内，我们可以通过<code>$ npm install</code>命令来加载该文件中的所有依赖项。</p>
+<p><strong><span style='color:#f25'>Gruntfile.js文件</span></strong></p>
+<p>Gruntfile文件是Grunt项目中最核心的文件，该文件同package.json文件一起存放在项目的根目录中，主要用来配置或定义任务（task）并加载Grunt插件。标准的grunt项目中必须拥有package.json和Gruntfile这两个文件。</p>
+<p><strong><span style='color:#f25'>node_modules文件夹</span></strong></p>
+<p>node_modules文件目录存放着从远程仓库下载的grunt以及所有相关的grunt插件。</p>
+<h3 id="2-2-Grunt的运转机制"><a href="#2-2-Grunt的运转机制" class="headerlink" title="2.2 Grunt的运转机制"></a>2.2 Grunt的运转机制</h3><img src='../../../../src/grunt_02.png'>
+
+<p>上面给出了Grunt项目中各主要组件的关系图示，是根据个人的理解绘制的，所以可能并非完全准确，但基本上已经能够说清楚Grunt的运转机制了。</p>
+<p>我们在使用Grunt作为项目构建工具的时候，所做的事情大概可以分成三块：准备、配置、执行。</p>
+<p><span style='border:1px solid #000'><strong>&nbsp; &nbsp;① 准备阶段&nbsp; &nbsp;</strong></span></p>
+<p>准备阶段主要进行以下操作</p>
+<blockquote>
+<p>❏ &nbsp;node环境的安装、npm的安装(在安装node的时候默认安装)</p>
+</blockquote>
+<blockquote>
+<p>❏ &nbsp;grunt-cli命令行的安装(通过<code>$ npm install -g grunt-cli</code>命令)</p>
+</blockquote>
+<blockquote>
+<p>❏ &nbsp;创建package.json文件(手动创建或通过<code>$ npm init</code>命令交互式创建)</p>
+</blockquote>
+<blockquote>
+<p>❏ &nbsp;配置grunt本地依赖(通过<code>$ npm install grunt --save-dev</code>下载grunt到项目)</p>
+</blockquote>
+<blockquote>
+<p>❏ &nbsp;安装需要的grunt插件(通过<code>$ npm install grunt-contrib-xx --save-dev</code>命令把需要的插件下载到node_modules目录)</p>
+</blockquote>
+<p><span style='border:1px solid #000'><strong>&nbsp; &nbsp;② 配置阶段&nbsp; &nbsp;</strong></span></p>
+<p>配置阶段主要就是<span style='color:#f25'>创建和编辑Gruntfile文件，在该文件中接收grunt参数并配置Task，注册Task。</span>Task简单说就是任务的意思，我们可以自定义任务，也可以直接使用现成的、一些其他优秀开发者定义好并打包为node模块发布的任务（其实就是grunt插件）。</p>
+<p>一般来说，我们总是通过grunt为我们提供的<code>grunt.initConfig</code>方法来对Task(插件)进行配置，如果是该Task是Grunt插件那么还需要先从node_modules目录中加载。</p>
+<p>如果对多个Task的执行有指定的顺序或者依赖关系，那么我们可以通过<code>grunt.registerTask</code>方法来<code>注册Task</code>。</p>
+<p><span style='border:1px solid #000'><strong>&nbsp; &nbsp;③ 执行阶段&nbsp; &nbsp;</strong></span></p>
+<p>在执行阶段，通过在命令行中输入<code>$ grunt task名称</code>的方式来执行指定的任务。</p>
+<p>执行Task的时候，可以单个执行，例如：</p>
+<p><code>$ grunt taskName1</code><br><code>$ grunt taskName2</code></p>
+<p>也可以用单条命令执行多个Task，每个Task都将按照参数的传入顺序依次执行，例如：</p>
+<p><code>$ grunt taskName1 taskName2</code></p>
+<p>在使用构建工具的时候，这些Task具体怎么执行，执行的顺序等并非是固定不变的，需要结合特定的需求来特殊处理。如果总是有一组Task需要按顺序执行，一般可以使用grunt.registerTask方法来给这组Task设置个别名，这一组的Task以数组的形式传递。</p>
+<p>例如：要依次执行js文件的合并、语法检查、代码压缩、css代码压缩等任务，则配置好相关Task后可以像下面这样来设置。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grunt.registerTask(<span class="string">&quot;customTask&quot;</span>,[<span class="string">&quot;concat&quot;</span>,<span class="string">&quot;jshint&quot;</span>,<span class="string">&quot;uglify&quot;</span>,<span class="string">&quot;cssmin&quot;</span>]);</span><br></pre></td></tr></table></figure>
+<p>要执行这组任务的时候，直接执行<code>$ grunt customTask</code>命令即可。</p>
+<img src='../../../../z.png' width="200px">
+
+<hr>
+<ul>
+<li>Posted by 博客园·<a target="_blank" rel="noopener" href="http://www.cnblogs.com/wendingding/">文顶顶</a> | <a target="_blank" rel="noopener" href="http://wendingding.com/">花田半亩</a></li>
+<li>联系作者 简书·<a target="_blank" rel="noopener" href="http://www.jianshu.com/users/c5703017b9f5/latest_articleshttp://www.jianshu.com/users/c5703017b9f5/latest_articles">文顶顶</a> 新浪微博·<a href="http://weibo.com/p/1005053800117445/home?from=page_100505&mod=TAB#place">Coder_文顶顶</a></li>
+<li>原创文章，版权声明：自由转载-非商用-非衍生-保持署名 | <a target="_blank" rel="noopener" href="http://www.cnblogs.com/wendingding/">文顶顶</a></li>
+</ul>
+</div></article></div></main><footer><div class="paginator"><a href="/2018/05/21/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96%E7%B3%BB%E5%88%97%5B04%5D%20Grunt%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8%E8%BF%9B%E9%98%B6/" class="prev">上一篇</a><a href="/2018/05/19/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96%E7%B3%BB%E5%88%97%5B02%5D%20Grunt%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8/" class="next">下一篇</a></div><div class="copyright"><p>© 2015 - 2021 <a href="https://weibo.com/u/3800117445">文顶顶</a> &nbsp;☁ 全站字数统计 418.8k (字)</p></div></footer></div><script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" integrity="sha384-crwIf/BuaWM9rM65iM+dWFldgQ1Un8jWZMuh3puxb8TOY9+linwLoI7ZHZT+aekW" crossorigin="anonymous"></script></body></html>

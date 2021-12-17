@@ -1,0 +1,42 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> 微信小程序基础[01]-小程序开发的基础知识 · 花田半亩</title><meta name="description" content="微信小程序基础[01]-小程序开发的基础知识 - 文顶顶"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="/logo.jpeg"><link rel="stylesheet" href="/css/apollo.css"><link rel="search" type="application/opensearchdescription+xml" href="https://weibo.com/u/3800117445/atom.xml" title="花田半亩"><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="花田半亩" type="application/atom+xml">
+</head><body><div class="wrap"><header><a href="/" class="logo-link"><img src="/%E9%B2%B8%E9%B1%BC.png" alt="logo"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">文顶顶</a></li><li class="nav-list-item"><a href="/tags/" target="_self" class="nav-list-link">标签</a></li><li class="nav-list-item"><a href="/tool/" target="_self" class="nav-list-link">工具</a></li><li class="nav-list-item"><a href="https://www.cnblogs.com/wendingding/" target="_blank" class="nav-list-link">博客园</a></li><li class="nav-list-item"><a href="https://github.com/flowerField" target="_blank" class="nav-list-link">GITHUB</a></li></ul></header><main class="container"><div class="post"><article class="post-block"><h1 class="post-title">微信小程序基础[01]-小程序开发的基础知识</h1><div class="post-info">Sep 20, 2018<span class="post-count"></span> ✧ 字数统计:1.1k(字) &nbsp;&nbsp; ♨︎ 阅读时长:3(分钟)</div><div class="post-content"><blockquote>
+<p>本文介绍在开发微信小程序需要的初步知识。</p>
+</blockquote>
+<h3 id="1-0-简单说明"><a href="#1-0-简单说明" class="headerlink" title="1.0 简单说明"></a>1.0 简单说明</h3><img src='../../../../src/wx.png'  height='200px'>
+
+<p>微信小程序于2016年9月21日内测。</p>
+<p>微信小程序是一种全新的连接用户与服务的方式，它可以在微信内被便捷地获取和传播，同时具有出色的使用体验。</p>
+<p>微信小程序是一种不需要下载安装就可以使用的应用，它实现了应用触手可及的梦想，用户只需要使用微信扫一扫或者简单搜索即可安装和使用，而且能够”用完就走”。</p>
+<p>微信小程序本身采用了类似于React Native和Weex一样的解析技术，开发者能够编写一套代码在多端(移动端和浏览器)运行，同时相比公众号的H5应用而言小程序又具备更好的原生体验。</p>
+<p>微信小程序与订阅号、服务号和企业号是并行的体系，具有独立的注册、发布流程，在正式开发小程序之前需要先在<a href="mp.weixin.qq.com">微信公众平台上面注册</a>。</p>
+<h3 id="2-0-小程序的注册和开发的基本流程"><a href="#2-0-小程序的注册和开发的基本流程" class="headerlink" title="2.0 小程序的注册和开发的基本流程"></a>2.0 小程序的注册和开发的基本流程</h3><p><strong>注册范围</strong></p>
+<p><span style='color:#19f'>个人</span>：由自然人注册和运营的公众帐号。<br><span style='color:#19f'>媒体</span>：报纸、杂志、电视、电台、通讯社、其他等。<br><span style='color:#19f'>其他</span>：不属于政府、媒体、企业或个人的类型。<br><span style='color:#19f'>企业</span>：企业、分支机构、个体工商户、企业相关品牌。<br><span style='color:#19f'>政府</span>：国内、各级、各类政府机构、事业单位(ex 公安、党团、司法、交通机构)等。</p>
+<p><strong>基本流程</strong></p>
+<img src='../../../../src/wx01.png'>
+
+<p><strong><code> [001] 注册</code></strong></p>
+<p>  <strong>1.填写账号信息</strong> 具体信息包括邮箱[没有被公众号 &amp; 开放平台 &amp; 个人微信绑定] 密码 验证码 勾选协议。</p>
+<p>  <strong>2.邮箱激活说明</strong> 注册之后需要进入注册时使用的邮箱查看邮件，并激活公众平台帐号。</p>
+<p>  <strong>3.用户信息登记</strong> 该步骤需要确认你的微信公众帐号主体类型，并请按照对应的类别进行信息登记。</p>
+<p>  政府、媒体、其他组织类型帐号，必须通过微信认证验证主体身份。</p>
+<p>  企业类型帐号需要通过公司的对公账户向腾讯公司打款来验证或者通过微信认证验证主体身份并支付300元认证费。</p>
+<p>  个人类型账号需要的信息主要有：<br>   <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[a] 身份证姓名(信息审核成功后身份证姓名不可修改)</span><br><span class="line">[b] 身份证号码(一个身份证号码只能注册5个小程序)</span><br><span class="line">[c] 管理员手机(需要短信验证)</span><br><span class="line">[d] 管理员身份验证（使用管理员本人的微信来扫描二维码，成为管理员后需合法、合理地谨慎操作..）</span><br></pre></td></tr></table></figure></p>
+<p><strong><code>[002] 完善信息</code></strong></p>
+<p>  进入到小程序首页后，查看小程序发布流程，填写小程序相关的信息。</p>
+<p>  需要填写的主要信息包括：<br>  <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">小程序的名称(30字以内)   ex: 用于演示的Demo</span><br><span class="line">小程序的头像(小于2MB 建议png格式)</span><br><span class="line">小程序的介绍(120内)</span><br><span class="line">正确选择小程序的服务类目，有餐饮、生活服务、体育、快递与邮政业等。</span><br></pre></td></tr></table></figure></p>
+<p><strong><code>[003] 开发微信小程序</code></strong></p>
+<p>  注册成功后，进入到开发首页，选择普通小程序开发者工具下载对应的开发工具安装。</p>
+<p>  如果是多人合作开发请添加并配置相关的开发者成员。</p>
+<p>  绑定开发者说明：<br>  <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">（1）个人主体小程序最多可绑定5个开发者，10个体验者。</span><br><span class="line">（2）未认证的组织类型小程序最多可绑定10个开发者，20个体验者。</span><br><span class="line">（3）已认证的小程序最多可绑定20个开发者，40个体验者。</span><br></pre></td></tr></table></figure></p>
+<p>  获取AppID:<code>进入“设置-开发设置”，获取AppID信息</code></p>
+<p><strong><code>[004] 版本发布</code></strong></p>
+<p>  需要先提交代码，然后提交审核，审核通过后发布。      </p>
+<img src='../../../../z.png' width="200px">
+
+<hr>
+<ul>
+<li>Posted by 博客园·<a target="_blank" rel="noopener" href="http://www.cnblogs.com/wendingding/">文顶顶</a> | <a target="_blank" rel="noopener" href="http://wendingding.com/">花田半亩</a></li>
+<li>联系作者 简书·<a target="_blank" rel="noopener" href="http://www.jianshu.com/users/c5703017b9f5/latest_articleshttp://www.jianshu.com/users/c5703017b9f5/latest_articles">文顶顶</a> 新浪微博·<a href="http://weibo.com/p/1005053800117445/home?from=page_100505&mod=TAB#place">Coder_文顶顶</a></li>
+<li>原创文章，版权声明：自由转载-非商用-非衍生-保持署名 | <a target="_blank" rel="noopener" href="http://www.cnblogs.com/wendingding/">文顶顶</a></li>
+</ul>
+</div></article></div></main><footer><div class="paginator"><a href="/2018/09/21/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E7%B3%BB%E5%88%97%5B02%5D-%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%A1%86%E6%9E%B6%E7%9A%84%E6%96%87%E4%BB%B6%E4%BD%93%E7%B3%BB/" class="prev">上一篇</a><a href="/2018/09/05/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%20%5B012%5D-%E5%8F%AF%E7%88%B1%E7%9A%84%E6%B4%AA%E6%B0%B4%E7%8C%9B%E5%85%BD/" class="next">下一篇</a></div><div class="copyright"><p>© 2015 - 2021 <a href="https://weibo.com/u/3800117445">文顶顶</a> &nbsp;☁ 全站字数统计 418.8k (字)</p></div></footer></div><script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" integrity="sha384-crwIf/BuaWM9rM65iM+dWFldgQ1Un8jWZMuh3puxb8TOY9+linwLoI7ZHZT+aekW" crossorigin="anonymous"></script></body></html>

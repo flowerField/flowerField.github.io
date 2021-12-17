@@ -1,0 +1,32 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> Node系列-Timeline · 花田半亩</title><meta name="description" content="Node系列-Timeline - 文顶顶"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="/logo.jpeg"><link rel="stylesheet" href="/css/apollo.css"><link rel="search" type="application/opensearchdescription+xml" href="https://weibo.com/u/3800117445/atom.xml" title="花田半亩"><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="花田半亩" type="application/atom+xml">
+</head><body><div class="wrap"><header><a href="/" class="logo-link"><img src="/%E9%B2%B8%E9%B1%BC.png" alt="logo"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">文顶顶</a></li><li class="nav-list-item"><a href="/tags/" target="_self" class="nav-list-link">标签</a></li><li class="nav-list-item"><a href="/tool/" target="_self" class="nav-list-link">工具</a></li><li class="nav-list-item"><a href="https://www.cnblogs.com/wendingding/" target="_blank" class="nav-list-link">博客园</a></li><li class="nav-list-item"><a href="https://github.com/flowerField" target="_blank" class="nav-list-link">GITHUB</a></li></ul></header><main class="container"><div class="post"><article class="post-block"><h1 class="post-title">Node系列-Timeline</h1><div class="post-info">Jun 12, 2016<span class="post-count"></span> ✧ 字数统计:686(字) &nbsp;&nbsp; ♨︎ 阅读时长:2(分钟)</div><div class="post-content"><div class='tip'>本文将通过时间轴的方式简单介绍Node的历史，我粗浅的认为这对于想要深入理解 Node 来说意义重大，本文包括但不限于[javaScript]()、[Node]() 以及[Deno]() 历史相关的内容。</div>
+
+<div class='titleX'>**JavaScript的发展历史**</div>
+
+<p><strong><code>概述</code></strong> JavaScript是一门动态、<code>弱类型</code>的解释型高级编程语言，它基于<code>原型</code>，<code>支持面向对象</code>和函数式编程等多种编程范式，通常简称为js。在世界上的绝大多数网站中都能看到JavaScript的身影，世界上所有的主流浏览器(<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/Google_Chrome">Chrome</a>、<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/Internet_Explorer">IE</a>、<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/Firefox">Firefox</a>、<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/Safari">Safari</a>、<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/Opera%E7%80%8F%E8%A6%BD%E5%99%A8">Opera</a>)都支持它。</p>
+<p><strong><code>作者</code></strong> <a target="_blank" rel="noopener" href="https://brendaneich.com/">Brendan Eich</a></p>
+<p><strong><code>背景</code></strong> JavaScript诞生于1995年，其诞生的初衷是为了减轻服务器端的压力而在客户端提供一种表单验证的功能。最初命名为Mocha，1995年9月在Netscape Navigator 2.0的Beta版中改名为<code>LiveScript</code>，同年12月，Netscape Navigator 2.0 Beta 3中部署时被重命名为JavaScript，当时网景公司与昇阳电脑公司(<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E6%98%87%E9%99%BD%E9%9B%BB%E8%85%A6">Sun</a>)组成的开发联盟为了让这门语言搭上Java这个编程语言“热词”，将其临时改名为JavaScript(其实就像现在某些网红蹭热度一样)。</p>
+<p><strong><code>标准</code></strong> 1996年11月，网景正式向<code>ECMA（欧洲计算机制造商协会）</code>提交语言标准。1997年6月，ECMA以JavaScript语言为基础制定了<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/ECMAScript">ECMAScript</a>标准规范<a target="_blank" rel="noopener" href="http://www.ecma-international.org/publications/standards/Ecma-262.htm">ECMA-262</a>。JavaScript成为了ECMAScript最著名的实现之一。实现ECMAScript规范的语言还有Adobe的<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/ActionScript">ActionScript</a>和微软的<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/JScript">JScript</a>。</p>
+<p><strong><code>范围</code></strong> 虽然在大多数情况下，我们都认为ECMAScript和JavaScript表达的是相同的含义，但实际上JavaScript所表达的却比ECMAScript要广泛的多。完整的JavaScript应该由以下三部分组成：</p>
+<blockquote>
+<p>❐ <span class='liYY'>ECMAScript</span> 由ECMA-262定义，提供核心语法功能。<br>❐ <span class='liYY'>DOM</span>    全称<code>Document Object Model</code>文档对象模型，提供访问和操作网页的API。<br>❐ <span class='liYY'>BOM</span>    全称<code>Browser Object Model</code>浏览器对象模型，提供与浏览器交互的方法和接口。</p>
+</blockquote>
+<img src='../../../../src/js_base07.png'>
+
+<p><strong><code>历史</code></strong> ECMAScript迄今已经历多个版本的迭代，下面给出主要的版本历史。</p>
+<img src='../../../../src/js_base09.png'>
+**`关系`** ECMAScript是标准(规范)，JavaScript是实现。H5是一种新的技术，JS用于实现H5新标签深层的扩展功能。HTML表示网页的核心内容和结构，CSS用于设置网页的样式，JavaScript控制网页的行为。
+
+<p><strong><code>应用</code></strong> JavaScript主要用于浏览器Web、物联网、游戏、桌面和移动应用开发和以及服务器端的开发。</p>
+<img src='../../../../src/js_base08.png' height='200px'>
+
+<p><strong><code>参考</code></strong> <a target="_blank" rel="noopener" href="http://ecma-international.org/">ECMA官网</a> <a target="_blank" rel="noopener" href="http://www.ecma-international.org/publications/files/ECMA-ST/Ecma-262.pdf">ECMA-262规范PDF文件</a> <a target="_blank" rel="noopener" href="https://brendaneich.com/">布兰登·艾克博客</a> </p>
+<img src='../../../../z.png' width="200px">
+
+<hr>
+<ul>
+<li>Posted by 博客园·<a target="_blank" rel="noopener" href="http://www.cnblogs.com/wendingding/">文顶顶</a> | <a target="_blank" rel="noopener" href="http://wendingding.com/">花田半亩</a></li>
+<li>联系作者 简书·<a target="_blank" rel="noopener" href="http://www.jianshu.com/users/c5703017b9f5/latest_articleshttp://www.jianshu.com/users/c5703017b9f5/latest_articles">文顶顶</a> </li>
+<li>原创文章，版权声明：自由转载-非商用-非衍生-保持署名 | <a target="_blank" rel="noopener" href="http://www.cnblogs.com/wendingding/">文顶顶</a></li>
+</ul>
+</div></article></div></main><footer><div class="paginator"><a href="/2016/10/13/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%20%5B01%5D-%E6%95%B0%E7%BB%84%E5%92%8C%E9%93%BE%E8%A1%A8%E3%80%81%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F%E4%B8%8E%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/" class="prev">上一篇</a><a href="/2016/06/06/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7%E7%B3%BB%E5%88%97-Git%20Tag/" class="next">下一篇</a></div><div class="copyright"><p>© 2015 - 2021 <a href="https://weibo.com/u/3800117445">文顶顶</a> &nbsp;☁ 全站字数统计 418.8k (字)</p></div></footer></div><script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" integrity="sha384-crwIf/BuaWM9rM65iM+dWFldgQ1Un8jWZMuh3puxb8TOY9+linwLoI7ZHZT+aekW" crossorigin="anonymous"></script></body></html>

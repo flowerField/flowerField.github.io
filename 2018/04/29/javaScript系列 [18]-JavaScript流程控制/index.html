@@ -1,0 +1,146 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> javaScript系列 [18]-流程控制 · 花田半亩</title><meta name="description" content="javaScript系列 [18]-流程控制 - 文顶顶"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="/logo.jpeg"><link rel="stylesheet" href="/css/apollo.css"><link rel="search" type="application/opensearchdescription+xml" href="https://weibo.com/u/3800117445/atom.xml" title="花田半亩"><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="花田半亩" type="application/atom+xml">
+</head><body><div class="wrap"><header><a href="/" class="logo-link"><img src="/%E9%B2%B8%E9%B1%BC.png" alt="logo"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">文顶顶</a></li><li class="nav-list-item"><a href="/tags/" target="_self" class="nav-list-link">标签</a></li><li class="nav-list-item"><a href="/tool/" target="_self" class="nav-list-link">工具</a></li><li class="nav-list-item"><a href="https://www.cnblogs.com/wendingding/" target="_blank" class="nav-list-link">博客园</a></li><li class="nav-list-item"><a href="https://github.com/flowerField" target="_blank" class="nav-list-link">GITHUB</a></li></ul></header><main class="container"><div class="post"><article class="post-block"><h1 class="post-title">javaScript系列 [18]-流程控制</h1><div class="post-info">Apr 29, 2018<span class="post-count"></span> ✧ 字数统计:2.7k(字) &nbsp;&nbsp; ♨︎ 阅读时长:10(分钟)</div><div class="post-content"><div class='tip'>本文将介绍javaScript语言中流程控制语句，包括顺序、选择和循环三种控制结构以及具体的控制语句如if else 、while等的基本使用。</div>
+
+<div class='titleX'>**流程控制语句简单介绍**</div>
+
+<img src='../../../../src/js_base17.png'>
+
+<p>JavaScript程序是一系列可执行语句的集合。</p>
+<p>默认情况下，JavaScript解释器依照语句的编写顺序从头到尾，从上到下的依次执行，这种默认执行代码的结构其实就是 <strong>顺序结构</strong>。而除了顺序结构外，JavaScript中还有一些特定的控制语句能够改变代码的默认(顺序)执行方式，这些特定的控制语句总体上可以分成 <strong>条件语句</strong>、<strong>循环语句</strong>和<strong>跳转语句</strong>。</p>
+<p>以上，根据它们的执行特点我们可以总结出JavaScript中的流程控制结构有三种，分别是**<code>顺序结构</code><strong>、</strong><code>选择结构</code>** 和 **<code>循环结构</code>**。 JavaScript程序在执行的时候默认就是 <strong>顺序结构</strong>，因此下文将主要讲解其它两种流程控制结构和基本用法。</p>
+<div class='titleX'>**选择控制结构**</div>
+
+<p>JavaScript中选择控制语句主要有<code>单分支(if)</code>、<code>双分支(if..else)</code>、<code>多分支(if..else if...)</code>和<code>多值选择(switch)</code>等，接下来分别对它们进行介绍。</p>
+<p><span style='border:1px solid #ccc;padding:2px 10px;color:#666'>① 单分支结构</span></p>
+<p> javaScript语言中的单分支选择结构主要使用if语句来实现。</p>
+<p><strong>单分支选择结构流程图</strong><br><img src='../../../../src/js_base18.png'  height=250px></p>
+<p><strong>语法示例</strong></p>
+<pre>
+
+      if ( condition ) {
+           expression1;
+      }
+      
+</pre> 
+
+<p> 在上面的语法结构中，if后面的圆括号( <code>condition</code> )编写是判断的条件(通常是条件表达式)，条件表达式的结果应该为布尔类型值(<a href="">如果不是布尔值则会调用Boolean函数转换为布尔值</a>)，在单分支结构语句中，当条件为“真”的时候，执行if里面的代码，当条件为“假”的时候，那么不执行if里面的代码，而会执行 if 语句后面的代码。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*演示 单分支if语句的基本使用*/</span></span><br><span class="line"><span class="comment">/*01 满足条件执行一条语句 &#123;&#125; 可以省略*/</span></span><br><span class="line"><span class="keyword">var</span> flag = <span class="literal">true</span>;</span><br><span class="line"><span class="keyword">if</span> (flag)</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&quot;-----&quot;</span>);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&quot;---end---&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//-----</span></span><br><span class="line"><span class="comment">//---end---</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*02 满足条件执行代码块*/</span></span><br><span class="line"><span class="keyword">var</span> age = <span class="number">20</span>;</span><br><span class="line"><span class="keyword">if</span> (age &gt;= <span class="number">18</span>)</span><br><span class="line">&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&quot;Hi,你已经是成年了~&quot;</span>);</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&quot;该自己对自己负责了。&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&quot;---end---&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//Hi,你已经是成年了~</span></span><br><span class="line"><span class="comment">//该自己对自己负责了。</span></span><br><span class="line"><span class="comment">//---end---</span></span><br></pre></td></tr></table></figure>
+
+<p><span style='border:1px solid #ccc;padding:2px 10px;color:#666'>② 双分支结构</span></p>
+<p>双分支选择结构主要用<code>if-else</code>语句来实现，在双分支结构中，当条件为“真”的时候执行if语句后面的代码，当条件为“假”的时候执行else后面的代码。</p>
+<p><strong>双分支选择结构流程图</strong></p>
+<img src='../../../../src/js_base19.png'  height=250px>
+ 
+<p><strong>语法示例</strong></p>
+<pre>
+
+     if ( condition ) {
+           expression1;
+      }else {
+            expression2;
+      }
+      expression3;
+      
+</pre> 
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*演示：双分支选择结构的代码示例*/</span></span><br><span class="line"> <span class="keyword">var</span> age = <span class="number">15</span>;</span><br><span class="line"> <span class="keyword">if</span> (age &gt;= <span class="number">18</span>)</span><br><span class="line"> &#123;</span><br><span class="line">   <span class="built_in">console</span>.log(<span class="string">&quot;测试结果：成年人&quot;</span>);</span><br><span class="line"> &#125;<span class="keyword">else</span></span><br><span class="line"> &#123;</span><br><span class="line">   <span class="built_in">console</span>.log(<span class="string">&quot;测试结果：未成年人&quot;</span>);</span><br><span class="line"> &#125;</span><br><span class="line"> <span class="built_in">console</span>.log(<span class="string">&quot;___end____&quot;</span>);</span><br><span class="line"></span><br><span class="line"> <span class="comment">//测试结果：未成年人</span></span><br><span class="line"> <span class="comment">//---end---</span></span><br></pre></td></tr></table></figure>
+<p><span style='border:1px solid #ccc;padding:2px 10px;color:#666'>③ 多分支结构</span></p>
+<p>多分支选择结构主要用<code>if-else if-else</code>语句来写，在多分支结构中，当前面的条件为“真”的时候，将不会判断后面的条件，当前面的条件为“假”的时候，会继续判断后面的条件，直到符合条件为止继而执行相应的代码块。</p>
+<p><strong>多分支选择结构流程图</strong><br><img src='../../../../src/js_base20.png'  height=250px></p>
+<p><strong>语法示例</strong> </p>
+<pre>
+
+     if ( condition1 ) {
+           expression1;
+      }else if( condition2 ) {
+            expression2;
+      }else if( condition3 ) {
+            expression3;
+      }else {
+            expression4;
+      }
+      expression5;
+      
+</pre>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> score = <span class="number">98</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (score &lt; <span class="number">60</span>)&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&quot;测试成绩：不及格&quot;</span>)</span><br><span class="line">&#125;<span class="keyword">else</span> <span class="keyword">if</span> (score &lt;= <span class="number">75</span>)&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&quot;测试成绩：良好&quot;</span>)</span><br><span class="line">&#125;<span class="keyword">else</span> <span class="keyword">if</span> (score &lt;= <span class="number">85</span>)&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&quot;测试成绩：优秀&quot;</span>)</span><br><span class="line">&#125;<span class="keyword">else</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&quot;测试成绩：优秀+&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"> <span class="built_in">console</span>.log(<span class="string">&quot;___end____&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//测试成绩：优秀+</span></span><br><span class="line"><span class="comment">//___end____&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>说明</strong> 在多分支语句中，当条件表达式满足前面的条件时，会执行前面的语句，尽管布尔语句同时也满足后面的条件，但并不会再执行后面的分支语句。</p>
+<p><span style='border:1px solid #ccc;padding:2px 10px;color:#666'>④ 多值选择结构</span></p>
+<p> 多值选择结构主要通过<code>switch-case</code>语句来实现。</p>
+<p><strong>多值选择结构流程图</strong></p>
+<img src='../../../../src/js_base21.png'  height=300px>
+  
+<p><strong>多值选择结构语法</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">switch</span>(n)&#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">1</span>:           <span class="comment">//如果n==1,那么从此处开始执行</span></span><br><span class="line">        <span class="comment">//执行代码块1</span></span><br><span class="line">        <span class="keyword">break</span>;        <span class="comment">//停止执行switch语句</span></span><br><span class="line">    <span class="keyword">case</span> <span class="number">2</span>:           <span class="comment">//如果n==2,那么从此处开始执行</span></span><br><span class="line">        <span class="comment">//执行代码块2</span></span><br><span class="line">        <span class="keyword">break</span>;        <span class="comment">//停止执行switch语句</span></span><br><span class="line">    <span class="keyword">case</span> <span class="number">3</span>:           <span class="comment">//如果n==3,那么从此处开始执行</span></span><br><span class="line">        <span class="comment">//执行代码块3</span></span><br><span class="line">        <span class="keyword">break</span>;        <span class="comment">//停止执行switch语句</span></span><br><span class="line">    <span class="keyword">default</span>:          <span class="comment">//如果n的值非1\2\3，那么执行下面的代码</span></span><br><span class="line">        <span class="comment">//执行代码块4</span></span><br><span class="line">        </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p> 当switch后面圆括号()中表达式的值与某个case后面的值匹配时，则执行这个case后面的语句。在匹配的时候会按照从上之下的顺序依次执行，<a href="">如果表达式的值与所有case后面的值都不匹配，则执行default后面的语句</a>。</p>
+<p> 语句中的 <code>break</code> 用于结束多值选择结构语句，如果没有 <code>break</code> 则会从满足条件的case开始顺序执行完整个switch语句(这种情况被称之为case穿透)，直到遇到break为止。<span style='color:#f08'>在大多数情况下，我们都应该使用 break 语句来终止每个 case 语句块</span>。</p>
+<blockquote>
+<p>ECMAScript标准允许每个case关键字跟随任意的表达式。在执行的时候，会先计算switch后面()中的表达式，然后按照从上到下的顺序来计算每个case后面的表达式，直到case表达式的值和switch后面表达式的值匹配位置。需要注意的是，<code>它们在进行匹配的时候实际上使用的是全等判断</code>(即不会进行有任何类型的转换）。</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> day=<span class="keyword">new</span> <span class="built_in">Date</span>().getDay();</span><br><span class="line"><span class="keyword">switch</span> (day)</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">case</span> <span class="number">0</span>:</span><br><span class="line">  x=<span class="string">&quot;Today it&#x27;s Sunday&quot;</span>;</span><br><span class="line">  <span class="keyword">break</span>;</span><br><span class="line"><span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">  x=<span class="string">&quot;Today it&#x27;s Monday&quot;</span>;</span><br><span class="line">  <span class="keyword">break</span>;</span><br><span class="line"><span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">  x=<span class="string">&quot;Today it&#x27;s Tuesday&quot;</span>;</span><br><span class="line">  <span class="keyword">break</span>;</span><br><span class="line"><span class="keyword">case</span> <span class="number">3</span>:</span><br><span class="line">  x=<span class="string">&quot;Today it&#x27;s Wednesday&quot;</span>;</span><br><span class="line">  <span class="keyword">break</span>;</span><br><span class="line"><span class="keyword">case</span> <span class="number">4</span>:</span><br><span class="line">  x=<span class="string">&quot;Today it&#x27;s Thursday&quot;</span>;</span><br><span class="line">  <span class="keyword">break</span>;</span><br><span class="line"><span class="keyword">case</span> <span class="number">5</span>:</span><br><span class="line">  x=<span class="string">&quot;Today it&#x27;s Friday&quot;</span>;</span><br><span class="line">  <span class="keyword">break</span>;</span><br><span class="line"><span class="keyword">case</span> <span class="number">6</span>:</span><br><span class="line">  x=<span class="string">&quot;Today it&#x27;s Saturday&quot;</span>;</span><br><span class="line">  <span class="keyword">break</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p class='tip'>**备注** 虽然我们在开发中大多数情况下，`default` 语句都是出现在switch结构的末尾，位于所有case的后面，但实际上 default 可以被卸载switch语句内的任何位置。</p>
+
+<div class='titleX'>**循环控制结构**</div>
+
+<p>和大多数编程语言一样，JavaScript语言中的循环控制结构也无非<code>while</code>、<code>do-while</code>以及<code>for</code>循环三种。<a href=""><strong>说明</strong> JavaScript中主要用来枚举对象的 for..in 、数组的 forEach 方法、map 方法以及新标准中的 for..of 等循环遍历方法，在此处暂不做介绍</a>。</p>
+<p><span style='border:1px solid #ccc;padding:2px 10px;color:#666'>while循环结构</span></p>
+<p>执行 <code>while循环结构</code> 语句的时候，先判断while后面的条件是否为“真”，如果为“真”那么就执行一遍循环体，然后继续检查条件是否为“真”，重复这个过程，直到while条件为“假”时停止。</p>
+<p>如果条件一直为“真”，循环体中又没有结束循环的语句时，代码就会陷入到死循环。</p>
+<p><strong>while循环流程图</strong></p>
+<img src='../../../../src/js_base22.png'  height=300px>
+
+<p><strong>while循环语法和代码示例</strong></p>
+<pre>
+    while(condition)
+    {
+        expression;
+    }
+</pre>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> i = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">while</span> (i &lt; <span class="number">10</span>)</span><br><span class="line">&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&quot;第&quot;</span>+(i + <span class="number">1</span>)+<span class="string">&quot;次打印，大家好，我是陆超！真好 &quot;</span>);</span><br><span class="line">  i++</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">第1次打印，大家好，我是陆超！真好 </span></span><br><span class="line"><span class="comment">第2次打印，大家好，我是陆超！真好 </span></span><br><span class="line"><span class="comment">第3次打印，大家好，我是陆超！真好 </span></span><br><span class="line"><span class="comment">第4次打印，大家好，我是陆超！真好 </span></span><br><span class="line"><span class="comment">第5次打印，大家好，我是陆超！真好 </span></span><br><span class="line"><span class="comment">第6次打印，大家好，我是陆超！真好 </span></span><br><span class="line"><span class="comment">第7次打印，大家好，我是陆超！真好 </span></span><br><span class="line"><span class="comment">第8次打印，大家好，我是陆超！真好 </span></span><br><span class="line"><span class="comment">第9次打印，大家好，我是陆超！真好</span></span><br><span class="line"><span class="comment">第10次打印，大家好，我是陆超！真好 </span></span><br><span class="line"><span class="comment">* */</span></span><br></pre></td></tr></table></figure>
+<p><span style='border:1px solid #ccc;padding:2px 10px;color:#666'>do-while循环结构</span></p>
+<p><strong>do-while循环流程图</strong></p>
+<img src='../../../../src/js_base23.png'  height=300px>
+
+<p><strong>do-while循环语法和代码示例</strong></p>
+<pre>
+    do{
+        expression;
+    }while(condition);
+</pre>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> i = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&quot;The number is &quot;</span> + i);</span><br><span class="line">  i++;</span><br><span class="line">&#125; <span class="keyword">while</span> (i&lt;<span class="number">5</span>);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&quot;循环结束后i的值为,&quot;</span>,i);</span><br><span class="line"> </span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">The number is 0</span></span><br><span class="line"><span class="comment">The number is 1</span></span><br><span class="line"><span class="comment">The number is 2</span></span><br><span class="line"><span class="comment">The number is 3</span></span><br><span class="line"><span class="comment">The number is 4</span></span><br><span class="line"><span class="comment">循环结束后i的值为, 5</span></span><br><span class="line"><span class="comment">* */</span></span><br></pre></td></tr></table></figure>
+
+<p><code>do/while循环</code>和<code>while循环</code>非常相似，它们的区别在于<code>do-while循环</code>是在循环的尾部而不是顶部检测循环表达式是否满足条件，这也意味着<code>do-while循环</code>的循环体将至少会执行一次。</p>
+<p><span style='border:1px solid #ccc;padding:2px 10px;color:#666'>for循环结构</span></p>
+<p><strong>for循环</strong> 提供了一种更方便的循环控制结构，它在while/do-while循环模式的基础上进行了简化。<strong>for循环语句</strong> 直接将<span style="color:#f08">循环条件的初始化、检测和更新</span>三步操作明确的声明为语法的一部分，更直接简洁。</p>
+<p><strong>for循环流程图</strong></p>
+<img src='../../../../src/js_base24.png'  height=350px>
+
+<p><strong>for循环语法</strong></p>
+<pre>
+
+    for(initialization; condition; increnment){
+        expression;
+    }
+    
+</pre>
+
+<p>在 for 循环中，<code>initialization</code>(初始化表达式); <code>condition</code>(循环条件表达式); <code>increnment</code>(计数器变量更新)三个表达式之间需要使用分号来进行分隔，它们分别负责计数器的初始化操作、循环条件判断以及循环计数器变量的更新操作。接下来，简单说明for循环的工作机制。</p>
+<p>在整个for循环结构中，<a href=""><code>initialization</code> 初始化表达式只会在循环开始前执行一次，然后检查<code>condition</code> 循环条件表达式的值是否为”真”，如果为”真”那么就执行循环体中的代码，最后执行<code>increnment</code> 计数器变量更新表达式。然后，接着检查循环条件的值是否为”真”，如果为”真”那么就执行循环体，重复这个过程</a>，直到循环条件的值为”假”或者在循环体中遇到break语句才会结束循环。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*嵌套for循环实现打印99乘法表*/</span></span><br><span class="line"><span class="built_in">document</span>.write(<span class="string">&quot;&lt;table&gt;&quot;</span>);</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">1</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">  <span class="built_in">document</span>.write(<span class="string">&quot;&lt;tr&gt;&quot;</span>);</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> j = <span class="number">1</span>; j&lt;= i; j++) &#123;</span><br><span class="line">    <span class="built_in">document</span>.write(<span class="string">&quot;&lt;td&gt;&quot;</span>+j+<span class="string">&quot;x&quot;</span>+i+<span class="string">&quot;=&quot;</span>+i*j+<span class="string">&quot;&lt;/td &gt;&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">document</span>.write(<span class="string">&quot;&lt;/tr&gt;&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">document</span>.write(<span class="string">&quot;&lt;/table&gt;&quot;</span>);</span><br></pre></td></tr></table></figure>
+<p><strong>打印九九乘法表</strong></p>
+<img src='../../../../src/js_base25.png'>
+
+<p class='tip'>**备注** 在 for 循环中的三个表达式中任何一个都可以忽略，省略三个都可以忽略，但至少要保持其结构的完整性(即不能省略两个分号)，最简单形式是`for( ; ; ){ ... }`，不过这将构成一个死循环同 `while(true){...}`一样。</p>
+
+<img src='../../../../z.png' width="200px">
+
+<hr>
+<ul>
+<li>Posted by 博客园·<a target="_blank" rel="noopener" href="http://www.cnblogs.com/wendingding/">文顶顶</a> | <a target="_blank" rel="noopener" href="http://wendingding.com/">花田半亩</a></li>
+<li>联系作者 简书·<a target="_blank" rel="noopener" href="http://www.jianshu.com/users/c5703017b9f5/latest_articleshttp://www.jianshu.com/users/c5703017b9f5/latest_articles">文顶顶</a> 新浪微博·<a href="http://weibo.com/p/1005053800117445/home?from=page_100505&mod=TAB#place">Coder_文顶顶</a></li>
+<li>原创文章，版权声明：自由转载-非商用-非衍生-保持署名 | <a target="_blank" rel="noopener" href="http://www.cnblogs.com/wendingding/">文顶顶</a></li>
+</ul>
+</div></article></div></main><footer><div class="paginator"><a href="/2018/04/30/javaScript%E7%B3%BB%E5%88%97%20%5B19%5D-JavaScript%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2/" class="prev">上一篇</a><a href="/2018/04/28/javaScript%E7%B3%BB%E5%88%97%20%5B17%5D-JavaScript%E7%9A%84%E8%BF%90%E7%AE%97%E7%AC%A6/" class="next">下一篇</a></div><div class="copyright"><p>© 2015 - 2021 <a href="https://weibo.com/u/3800117445">文顶顶</a> &nbsp;☁ 全站字数统计 418.8k (字)</p></div></footer></div><script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" integrity="sha384-crwIf/BuaWM9rM65iM+dWFldgQ1Un8jWZMuh3puxb8TOY9+linwLoI7ZHZT+aekW" crossorigin="anonymous"></script></body></html>

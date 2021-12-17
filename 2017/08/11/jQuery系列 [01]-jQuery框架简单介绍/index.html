@@ -1,0 +1,70 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> jQuery系列 [01]-jQuery框架简单介绍 · 花田半亩</title><meta name="description" content="jQuery系列 [01]-jQuery框架简单介绍 - 文顶顶"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="/logo.jpeg"><link rel="stylesheet" href="/css/apollo.css"><link rel="search" type="application/opensearchdescription+xml" href="https://weibo.com/u/3800117445/atom.xml" title="花田半亩"><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="花田半亩" type="application/atom+xml">
+</head><body><div class="wrap"><header><a href="/" class="logo-link"><img src="/%E9%B2%B8%E9%B1%BC.png" alt="logo"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">文顶顶</a></li><li class="nav-list-item"><a href="/tags/" target="_self" class="nav-list-link">标签</a></li><li class="nav-list-item"><a href="/tool/" target="_self" class="nav-list-link">工具</a></li><li class="nav-list-item"><a href="https://www.cnblogs.com/wendingding/" target="_blank" class="nav-list-link">博客园</a></li><li class="nav-list-item"><a href="https://github.com/flowerField" target="_blank" class="nav-list-link">GITHUB</a></li></ul></header><main class="container"><div class="post"><article class="post-block"><h1 class="post-title">jQuery系列 [01]-jQuery框架简单介绍</h1><div class="post-info">Aug 11, 2017<span class="post-count"></span> ✧ 字数统计:1.4k(字) &nbsp;&nbsp; ♨︎ 阅读时长:5(分钟)</div><div class="post-content"><h4 id="1-1-jQuery简介"><a href="#1-1-jQuery简介" class="headerlink" title="1.1 jQuery简介"></a>1.1 jQuery简介</h4><p>jQuery是一款优秀的javaScript库（框架），该框架凭借简洁的语法和跨平台的兼容性，极大的简化了开发人员对HTML文档，DOM，事件以及Ajax的操作。<br><img src='../../../../src/jQuery_logo.png'  width="400" height="100"></p>
+<p>主旨口号：写的更少, 干的更多(以更少的代码,实现更多的功能)</p>
+<h4 id="1-2-作者和版本介绍"><a href="#1-2-作者和版本介绍" class="headerlink" title="1.2 作者和版本介绍"></a>1.2 作者和版本介绍</h4><span id="more"></span>
+<p>jQuery最早由<code>约翰·雷西格（John Resig）</code>于2006年1月的BarCamp NYC上发布第一个版本。目前由Dave Methvin领导的开发团队进行开发，是目前最受欢迎的JavaScript库。</p>
+<p><img src="https://github.com/flowerField/Source/blob/master/Blog/jQuery_author.png?raw=true"></p>
+<p>作者：John Resig(约翰·雷西格)</p>
+<p>John Resig(约翰·雷西格)，1984年5月8日出生于美国纽约。</p>
+<p>个人著作：<code>精通Javascript</code>以及<code>JavaScript忍者的秘密</code></p>
+<p>工作经验：先后于Mozilla、可汗学院担任开发工程师。</p>
+<hr>
+<p>jQuery框架版本相关介绍</p>
+<p>开源许可协议：    MIT许可证</p>
+<p>官方网站：    <a target="_blank" rel="noopener" href="http://jquery.com/">http://jquery.com/</a></p>
+<p>托管仓库：    <a target="_blank" rel="noopener" href="https://github.com/jquery/jquery">https://github.com/jquery/jquery</a></p>
+<p>版本情况：<br>JQuery目前分成1.x版、2.x版和3.x版本，从<code>2.0.0开始不再支持IE 6/7/8</code>，2.0.0版本之前通过jQuery Migrate plugin与先前版本保持兼容。</p>
+<p><code>最新版本</code>：3.2.1</p>
+<h4 id="1-3-jQuery的优点（特点）"><a href="#1-3-jQuery的优点（特点）" class="headerlink" title="1.3 jQuery的优点（特点）"></a>1.3 jQuery的优点（特点）</h4><ul>
+<li>轻量级</li>
+<li>免费开源</li>
+<li>完善的文档</li>
+<li>丰富的插件支持</li>
+<li>完善的Ajax功能</li>
+<li>不会污染顶级变量</li>
+<li>强大的选择器功能</li>
+<li>出色的DOM操作封装</li>
+<li>出色的浏览器兼容性</li>
+<li>可靠的事件处理机制</li>
+<li>隐式迭代和链式编程操作</li>
+</ul>
+<h4 id="1-4-jQuery的基本功能"><a href="#1-4-jQuery的基本功能" class="headerlink" title="1.4 jQuery的基本功能"></a>1.4 jQuery的基本功能</h4><ol>
+<li><strong>访问和操作DOM元素</strong> <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">说明：使用jQuery库,可以很方便地获取和修改页面中的某元素无论是删除、移动、复制元素,jQuery都</span><br><span class="line">提供了一整套方便、快捷的方法,既减少了代码的编写,又大大提高了用户对页面的体验度。</span><br><span class="line"></span><br><span class="line">方法示例：append() prepend() remove() empty() html() text()等</span><br></pre></td></tr></table></figure></li>
+</ol>
+<ol start="2">
+<li><p><strong>控制页面的CSS样式</strong></p>
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">说明：使用jQuery框架,可以帮助我们方便快捷的来操作CSS样式，且jQuery已经完成了浏览器兼容性处理。</span><br><span class="line"></span><br><span class="line">方法示例：css() addClass() toggleClass() hasClass() removeClass()等</span><br></pre></td></tr></table></figure></li>
+<li><p><strong>完善的Ajax网络请求</strong></p>
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">说明：Ajax是在原生页面中异步发送和读取服务器数据所采用的组合技术。</span><br><span class="line">使用Ajax可以极大提高用户体验和程序性能，jQuery框架中提供了专门处理网络请求的Ajax组件，</span><br><span class="line">我们可以方便的使用jQuery中提供的方法来实现Ajax网络请求。</span><br><span class="line"></span><br><span class="line">方法示例：ajax() get() post()等</span><br></pre></td></tr></table></figure></li>
+<li><p><strong>页面标签事件处理</strong></p>
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">说明：jQuery框架中对标签的处理，让表现层与功能开发分离，让我们只需要更多的关注业务逻辑方面的实现。</span><br><span class="line"></span><br><span class="line">方法示例：on() off() click() mouseenter() hover() 等</span><br></pre></td></tr></table></figure></li>
+<li><p><strong>整套的动画特效实现</strong></p>
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">说明：jQuery框架中提供了一整套的动画方法，可以满足开发中常见的动画效果实现，而且使用简单方便。</span><br><span class="line"></span><br><span class="line">方法示例：show() hide() slideDown() slideUp() Animate() 等</span><br></pre></td></tr></table></figure></li>
+<li><p><strong>好用的工具方法和强大的插件支持</strong></p>
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">说明：jQuery框架中提供了插件机制，利用插件机制程序员可以方便的对原有的框架和功能进行扩展。</span><br><span class="line">另外框架本身也提供了表单、UI等大量的插件,这些插件的使用,极大丰富了页的展示效果。除了插件之外，</span><br><span class="line">jQuery框架还为我们提供了很多好用的工具方法，这些工具方法可以帮助我们解决开发中一些常见需求。</span><br><span class="line"></span><br><span class="line">方法示例：extend() each() map()等</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h4 id="1-5-第一个jQuery程序"><a href="#1-5-第一个jQuery程序" class="headerlink" title="1.5 第一个jQuery程序"></a>1.5 第一个jQuery程序</h4><p><code>① jQuery框架的使用步骤</code></p>
+<ol>
+<li>下载jQuery框架在本地的电脑上（官网提供框架的下载链接，两个版本可供选择）</li>
+<li> 创建项目，在项目中使用script引入jQuery框架</li>
+<li> 使用jQuery框架来实现相关的功能</li>
+</ol>
+<p><code>② jQuery框架示例程序</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Title<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="comment">&lt;!--01 先下载(获取)jQuery框架到项目中--&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="comment">&lt;!--02 把下载好的jQuery框架导入到项目中--&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;jquery-3.2.1.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">button</span>&gt;</span>我是按钮<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span></span><br><span class="line"><span class="javascript"><span class="xml">    <span class="comment">/*03 直接使用jQuery框架里面的方法来实现指定的功能*/</span></span></span></span><br><span class="line"><span class="javascript"><span class="xml">    $(<span class="built_in">document</span>).ready(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span></span><br><span class="line"><span class="javascript"><span class="xml">        <span class="comment">/*</span></span></span></span><br><span class="line"><span class="comment"><span class="javascript"><span class="xml">        * 04 表示等DOM加载后,获取页面中的按钮,并且给按钮添加点击事件</span></span></span></span><br><span class="line"><span class="comment"><span class="javascript"><span class="xml">        *    点击按钮后,在控制台打印消息</span></span></span></span><br><span class="line"><span class="comment"><span class="javascript"><span class="xml">        * */</span></span></span></span><br><span class="line"><span class="javascript"><span class="xml">        $(<span class="string">&quot;button&quot;</span>).click(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span></span><br><span class="line"><span class="javascript"><span class="xml">            <span class="built_in">console</span>.log(<span class="string">&quot;点击了页面中的按钮&quot;</span>);</span></span></span><br><span class="line"><span class="javascript"><span class="xml">        &#125;)</span></span></span><br><span class="line"><span class="javascript"><span class="xml">    &#125;)</span></span></span><br><span class="line"><span class="javascript"><span class="xml"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+<h4 id="1-6-jQuery框架的代码风格"><a href="#1-6-jQuery框架的代码风格" class="headerlink" title="1.6 jQuery框架的代码风格"></a>1.6 jQuery框架的代码风格</h4><p><code>① 美元符号起始</code></p>
+<p>在jQuery框架中，不管是页面元素的选择、内置的功能函数，都使用美元符号来起始的，而这个美元符号其实就是jQuery框架当中最重要且独有的对象: <strong>jQuery对象</strong>。</p>
+<p><code>② 链式编程操作</code></p>
+<p>jQuery框架中为我们提供了链式编程操作，链式编程的特点中，几乎每个jQuery方法执行完毕后都会把当前正在操作的对象作为返回值返回，如果我们需要对某个标签执行多个操作，那么使用链式编程可以让代码更短更简洁。<br>ex：<code>$(&quot;#demoID&quot;).addClass(&quot;cur&quot;).siblings().removeClass(&quot;cur&quot;)</code></p>
+<hr>
+<h4 id="附-jQuery框架知识体系"><a href="#附-jQuery框架知识体系" class="headerlink" title="附: jQuery框架知识体系"></a>附: jQuery框架知识体系</h4><img src='../../../../src/jQuery_img.png'>
+
+<img src='../../../../z.png' width="200px">
+
+<hr>
+<ul>
+<li>Posted by 博客园·<a target="_blank" rel="noopener" href="http://www.cnblogs.com/wendingding/">文顶顶</a> | <a target="_blank" rel="noopener" href="http://wendingding.com/">花田半亩</a></li>
+<li>联系作者 简书·<a target="_blank" rel="noopener" href="http://www.jianshu.com/users/c5703017b9f5/latest_articleshttp://www.jianshu.com/users/c5703017b9f5/latest_articles">文顶顶</a> 新浪微博·<a href="http://weibo.com/p/1005053800117445/home?from=page_100505&mod=TAB#place">Coder_文顶顶</a></li>
+<li>原创文章，版权声明：自由转载-非商用-非衍生-保持署名 | <a target="_blank" rel="noopener" href="http://www.cnblogs.com/wendingding/">文顶顶</a></li>
+</ul>
+</div></article></div></main><footer><div class="paginator"><a href="/2017/08/12/jQuery%E7%B3%BB%E5%88%97%20%5B02%5D-jQuery%E6%A1%86%E6%9E%B6%E4%BD%BF%E7%94%A8%E5%87%86%E5%A4%87/" class="prev">上一篇</a><a href="/2017/08/10/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%20%5B000%5D-%E9%87%91%E7%8E%89%E8%89%AF%E8%A8%80/" class="next">下一篇</a></div><div class="copyright"><p>© 2015 - 2021 <a href="https://weibo.com/u/3800117445">文顶顶</a> &nbsp;☁ 全站字数统计 418.8k (字)</p></div></footer></div><script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" integrity="sha384-crwIf/BuaWM9rM65iM+dWFldgQ1Un8jWZMuh3puxb8TOY9+linwLoI7ZHZT+aekW" crossorigin="anonymous"></script></body></html>
