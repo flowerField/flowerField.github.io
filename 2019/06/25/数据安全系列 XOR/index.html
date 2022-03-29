@@ -1,0 +1,65 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> 数据安全系列 - XOR · 花田半亩</title><meta name="description" content="数据安全系列 - XOR - 文顶顶"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="/logo.jpeg"><link rel="stylesheet" href="/css/apollo.css"><link rel="search" type="application/opensearchdescription+xml" href="https://weibo.com/u/3800117445/atom.xml" title="花田半亩"><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="花田半亩" type="application/atom+xml">
+</head><body><div class="wrap"><header><a href="/" class="logo-link"><img src="/%E9%B2%B8%E9%B1%BC.png" alt="logo"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">文顶顶</a></li><li class="nav-list-item"><a href="/tags/" target="_self" class="nav-list-link">标签</a></li><li class="nav-list-item"><a href="https://www.cnblogs.com/wendingding/" target="_blank" class="nav-list-link">博客园</a></li><li class="nav-list-item"><a href="https://github.com/flowerField" target="_blank" class="nav-list-link">GITHUB</a></li></ul></header><main class="container"><div class="post"><article class="post-block"><h1 class="post-title">数据安全系列 - XOR</h1><div class="post-info">Jun 25, 2019<span class="post-count"></span> ✧ 字数统计:2.2k(字) &nbsp;&nbsp; ♨︎ 阅读时长:7(分钟)</div><div class="post-content"><blockquote>
+<p>本文简单介绍计算机体系中的异或运算，运算其特点以及在数据安全领域的应用。</p>
+</blockquote>
+<h3 id="异或运算介绍"><a href="#异或运算介绍" class="headerlink" title="异或运算介绍"></a>异或运算介绍</h3><p><strong>XOR</strong> 全称为<code>exclusive OR</code>,简写为 XOR，中文称为<strong>异或运算</strong>。</p>
+<p>异或运算是一种数学运算符，主要应用于逻辑运算和计算机体系中的位运算。异或运算的数学符号常表示为“⊕”，运算法则为：<code>A ⊕ B = (¬A ∧B) ∨ (A ∧¬B)</code>。<br>简单研究下 1 个位（比特）的异或运算。</p>
+<div style='font-Size:16px;color:#190;border:1px dashed #000;width:350px;padding:10px;text-align:center'> 0 ⊕ 0 = 0；（0与0异或运算的结果为0）
+0 ⊕ 1 = 1；（0与1异或运算的结果为1）
+1 ⊕ 0 = 1；（1与0异或运算的结果为1）
+1 ⊕ 1 = 0；（1与1异或运算的结果为0）
+</div>
+
+<p>异或运算可以类比于<span style='text-decoration:underline;color:#f66;'>奇偶数的加法运算</span>或者是<span style='text-decoration:underline ; color:#F66;'>翻牌处理</span>。在按位运算的过程中，参与运算的数值只有两种可能，那么为 0 要么为 1，在这里 0 为偶数，1 位奇数，可以得出下面的运算特征，我们发现结果和异或运算是一致的。</p>
+<div style='font-Size:16px;color:#456;border:1px dashed #000;width:500px;padding:10px;text-align:center'> 偶数 + 偶数 = 偶数；（偶数与偶数相加运算的结果为偶数）
+偶数 + 奇数 = 奇数；（偶数与奇数相加运算的结果为奇数）
+奇数 + 偶数 = 奇数；（奇数与偶数相加运算的结果为奇数）
+奇数 + 奇数 = 偶数；（奇数与奇数相加运算的结果为偶数）
+</div>
+
+<p>接下来我们来看下所谓的<strong>翻牌处理</strong>。我们可以想象一下，假如桌面中有一张扑克牌，对应二进制总位的异或运算有 0 和 1 两种情况，那么对于扑克牌也有两种情况，那么就是不翻转和翻转，我们找到它们的对应关系。</p>
+<img src='../../../../src/xor02.jpeg?raw=true' width='150px'>
+
+<p>接下来我们来分析下对扑克牌进行翻转|不翻转处理以及对应特征，我们发现结果和异或运算是一致的。</p>
+<img src='../../../../src/xor03.png'>
+
+<p>**异或运算的特征可以简单的归纳为：<code>相同为0，不同为1</code>**。</p>
+<h3 id="常用位运算符补充"><a href="#常用位运算符补充" class="headerlink" title="常用位运算符补充"></a>常用位运算符补充</h3><p>位操作符用于最基本的层次，它们按照内存中表示数值的位来操作数值，位运算符主要有：<strong>按位与（&amp;）</strong>、<strong>按位或（|）</strong>、<strong>按位异或（^）</strong>、<strong>按位取反（~）</strong>、<strong>左移（&lt;&lt;）**和**右移（&gt;&gt;）</strong>，这里将简单介绍常用的位运算符以及其基本特征作为补充。</p>
+<p><strong>按位或运算（OR）</strong>的运算符为<code>|</code>, 是双目运算符，其运算特征是：<code>两个运算数中有1则为1，否则为0</code>。</p>
+<p><strong>按位与运算（AND）</strong>的运算符为<code>&amp;</code>，是双目运算符，其运算特征是：<code>只有当两个操作数均为1的时候结果为1，否则为0（也可以理解为：两个运算数中有0则为0，否则为1）</code>。</p>
+<p><span style='color:#195'><strong>OR&nbsp;运算</strong></span>&nbsp; &nbsp;<span style='border:1px solid #000'><strong>&nbsp; &nbsp;1 | 1 = 1，1 | 0 = 1， 0 | 1 = 1，0 | 0 = 0 &nbsp; &nbsp;</strong></span></p>
+<p><span style='color:#195'><strong>AND 运算</strong></span> <span style='border:1px solid #000'><strong>&nbsp; &nbsp;1 &amp; 1 = 1，1 &amp; 0 = 0， 0 &amp; 1 = 0，0 &amp; 0 = 0 &nbsp; &nbsp;</strong></span></p>
+<p><strong>按位取反运算（NOT）</strong>也称为按位非运算，运算符为<code>~</code>，单目运算符。对操作数执行按位取反会返回操作数的反码，其运算本质为：<strong>操作数的负值-1</strong>。为了理解这一点，必须搞清楚下面的这些基本概念。</p>
+<p>在处理数据的时候，通常把数据分为<code>有符号</code>和<code>无符号</code>的，如果我们使用 32 位二进制码（不同语言有差异表示数据，那么对于有符号的整数，则 32 位中的前 31 位用于表示整数的值。第 32 位用于表示数值的符号：其中 0 表示正数，1 表示负数。第 32 位被称为符号位。如果要表示 19 这个数字，那么其二进制码形式如下：<span style='color:#195'>00000000 00000000 00000000 00010011 </span>需要注意的是，虽然负数在使用二进制码表示的时候使用的格式是二进制补码。下面给出负数的二进制补码表示方式的处理过程：</p>
+<blockquote>
+<p>[1] 求负数绝对值的二进制码。<br>[2] 求该二进制码的反码形式。<br>[3] 对得到的二进制反码加一。</p>
+</blockquote>
+<p>这里，我们以-19 为例子来演示负数的表示方式。</p>
+<p>19 的二进制码 <span style='color:#195'>00000000 00000000 00000000 00010011</span><br>二进制码反码 11111111 11111111 11111111 11101100<br>上面反码加 ① <span style='color:#f22'>11111111 11111111 11111111 11101101</span></p>
+<p>我们回到按位非（NOT）的操作中来，它的结算特点是每个参与计算的二进制位都取反，相当于是求二进制的反码。我们已经知道负数的二进制表示方式，应该也就能够理解<code>对操作数进行按位非操作结果其实就是操作数的负值-1</code>。因为操作数的负值表示需要（反码 + 1），而我们需要的结果是反码，所以只需要倒退一步即可。</p>
+<h3 id="XOR-和密码体系"><a href="#XOR-和密码体系" class="headerlink" title="XOR 和密码体系"></a>XOR 和密码体系</h3><p>现在我们已经清楚了异或运算的特点，而且掌握了 1 个二进制位的异或运算方式，那么下面我们来看一个稍微复杂点的例子，尝试着对一系列的二进制位进行异或处理。</p>
+<img src='../../../../src/xor04.png'>
+
+<p>上面的示例中我们使用两个 8 位的二进制系列 A 和 B 进行异或运算，其中 A 的内容为 0101 0001，B 的内容为 0010 0101。在对多个比特序列进行异或运算的时候，需要分别对每一位的数据进行异或运算以得到结果。这里 A ⊕ B 得到的最终结果为 C，其内容是 0111 0100。</p>
+<p>上面的计算过程非常简单，这里要特别说明的是因为异或运算的特点是：<code>相同为0，不同为1</code>, 所以考虑如果把 A ⊕ B 得到的结果 和 B 再次进行 XOR 运算，那么结果会变回 A，即 A ⊕ B = C ，C ⊕ B = A 。下面给出具体的图示：</p>
+<img src='../../../../src/xor05.png'>
+
+<p>**<span style='color:#195'>XOR 运算的可逆性可以用来恢复原值，这在加密算法中意义非凡</span>**。</p>
+<p>源于 XOR 运算的以上特性，其实完全可以利用简单异或运算设计出一款高强度的密码算法，我们把 A 作为原文，B 作为密钥，C 作为密文，对应的密码算法为：</p>
+<p><strong>加密算法</strong> <span style='border:1px solid #000'>**&nbsp; &nbsp;原文 ⊕ 密钥 =&gt; 密文 &nbsp; &nbsp; <strong></span><br><strong>解密算法</strong> <span style='border:1px solid #000'></strong>&nbsp; &nbsp;密文 ⊕ 密钥 =&gt; 原文 &nbsp; &nbsp; **</span></p>
+<img src='../../../../src/xor07.png'>
+
+<p>我们来简单看一下上面的图形展示，图形中我们把<code>实心的点假设为1，空性的点假设为0</code>，那么第一张图相当于明文（原文），第二张图作为蒙版（相当于密钥）盖在第一张图上的时候可以得到第三张图形（相当于密文），这个过程是可逆的，如果把第二张图片盖在第三张图片上面那么将能够还原出第一张图形来。接下来我们来看下字符串的处理情况，假设对<code>miao和nice</code>进行操作，它们在进行 XOR 运算后将得到一个位数相同的二进制码，把得到的二进制码和<code>nice</code>再进行 XOR 运算将能够恢复得到原文<code>miao</code>字符串。下面给出具体的图示：</p>
+<img src='../../../../src/xor06.png'>
+
+<p>其实像上面的这样的处理方式早在 1917 年就由维纳（<code>G·S Vernam</code>）提出了，被称为<strong>一次性密码</strong>，一次性密码的加密解密方式决定了它在理论上永远无法被破译，这一特性于 1949 年由香农通过数学方法加以证明。但实际上，这样简单的一次性密码并没有在现实中被广泛使用，原因有以下几点：<span style='color:#195'>① 因为加密解密使用的是相同的密钥，所以无法保证密钥的配送和保存的安全。② 因为密钥的长度需要和明文匹配，所以意味着明文有 500MB，那么密钥也必须 500MB。③ 在一次性密码中需要生成大量真正的随机数，这很难实现。</span></p>
+<p>不过，虽然直接应用 XOR 运算的可逆性实现的一次性密码算法无法在商业中真正应用，但我们还是能在很多经典的加密算法（比如，<code>DES</code>和<code>AES</code>）中看到 XOR 运算的身影。关于异或运算在其他算法中的应用，这里我们不做展开，相关的内容我将再写一篇新的文章来说明。。</p>
+<img src='../../../../z.png' width="200px">
+
+<hr>
+<ul>
+<li>Posted by 博客园·<a target="_blank" rel="noopener" href="http://www.cnblogs.com/wendingding/">文顶顶</a> | <a target="_blank" rel="noopener" href="http://wendingding.com/">花田半亩</a></li>
+<li>联系作者 简书·<a target="_blank" rel="noopener" href="http://www.jianshu.com/users/c5703017b9f5/latest_articleshttp://www.jianshu.com/users/c5703017b9f5/latest_articles">文顶顶</a> 新浪微博·<a href="http://weibo.com/p/1005053800117445/home?from=page_100505&mod=TAB#place">Coder_文顶顶</a></li>
+<li>原创文章，版权声明：自由转载-非商用-非衍生-保持署名 | <a target="_blank" rel="noopener" href="http://www.cnblogs.com/wendingding/">文顶顶</a></li>
+</ul>
+</div></article></div></main><footer><div class="paginator"><a href="/2019/06/25/Gossip%20-%20deepClone/" class="prev">上一篇</a><a href="/2019/05/06/%E7%96%91%E9%9A%BE%E6%9D%82%E7%97%87-gyp:%20No%20Xcode%20or%20CLT%20version%20detected/" class="next">下一篇</a></div><div class="copyright"><p>© 2015 - 2022 <a href="https://weibo.com/u/3800117445">文顶顶</a> &nbsp;☁ 全站字数统计 418.8k (字)</p></div></footer></div><script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" integrity="sha384-crwIf/BuaWM9rM65iM+dWFldgQ1Un8jWZMuh3puxb8TOY9+linwLoI7ZHZT+aekW" crossorigin="anonymous"></script></body></html>

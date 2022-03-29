@@ -2,9 +2,18 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://weibo.com/u/3800117445/2022/01/25/%E5%9B%9E%E5%AE%B6/</loc>
+    <loc>https://weibo.com/u/3800117445/2019/06/25/%E6%95%B0%E6%8D%AE%E5%AE%89%E5%85%A8%E7%B3%BB%E5%88%97%20XOR/</loc>
     
-    <lastmod>2022-01-25</lastmod>
+    <lastmod>2022-03-29</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://weibo.com/u/3800117445/2019/06/25/Gossip%20-%20deepClone/</loc>
+    
+    <lastmod>2022-03-29</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
