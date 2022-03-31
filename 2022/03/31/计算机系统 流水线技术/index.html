@@ -1,0 +1,55 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> 计算机系统 流水线技术 · 花田半亩</title><meta name="description" content="计算机系统 流水线技术 - 文顶顶"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="/logo.jpeg"><link rel="stylesheet" href="/css/apollo.css"><link rel="search" type="application/opensearchdescription+xml" href="https://weibo.com/u/3800117445/atom.xml" title="花田半亩"><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="花田半亩" type="application/atom+xml">
+</head><body><div class="wrap"><header><a href="/" class="logo-link"><img src="/favicon.png" alt="logo"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">文顶顶</a></li><li class="nav-list-item"><a href="/tags/" target="_self" class="nav-list-link">标签</a></li><li class="nav-list-item"><a href="https://www.cnblogs.com/wendingding/" target="_blank" class="nav-list-link">博客园</a></li><li class="nav-list-item"><a href="https://github.com/flowerField" target="_blank" class="nav-list-link">GITHUB</a></li></ul></header><main class="container"><div class="post"><article class="post-block"><h1 class="post-title">计算机系统 流水线技术</h1><div class="post-info">Mar 31, 2022<span class="post-count"></span> ✧ 字数统计:1.8k(字) &nbsp;&nbsp; ♨︎ 阅读时长:6(分钟)</div><div class="post-content"><p class='tip'>本文介绍计算机系统中采用的流水线技术，包括流水线相关的基础知识、工作原理、流水线技术对性能的改进、吞吐率、加速比和效率等相关的计算以及存在的问题等内容。</p>
+
+<img src='../../../../src/lsx_01.png'>
+
+<h2 id="流水线技术简单介绍"><a href="#流水线技术简单介绍" class="headerlink" title="流水线技术简单介绍"></a>流水线技术简单介绍</h2><p>流水线技术通过并行硬件(利用时间并行性，区别于空间并行性)来提高计算机系统的性能。</p>
+<p>流水线技术把一项任务分解成若干项顺序执行的子任务，不同的子任务由不同的操作部件来负责执行，而这些部件可以同时并行工作，这项技术的关键在于<code>重叠执行</code>，通过这种方式可以在不增加硬件或者只增加少量硬件的前提下数倍的提升处理机运算速度。</p>
+<img src='../../../../src/lsx_03.png'>
+
+<h2 id="流水线的分级"><a href="#流水线的分级" class="headerlink" title="流水线的分级"></a>流水线的分级</h2><p>根据使用情况的不同，流水线可以分成三个级别：</p>
+<p><strong>（1）操作部件级流水线(运算符操作流水线)</strong> 将复杂的算术运算和逻辑运算组成流水线的工作方式。<br><strong>（2）指令级流水线</strong> 把一条指令的执行过程分解成多个阶段，比如可以把某个指令分解为：取指令、分析指令、执行指令三个阶段。<br><strong>（3）处理机间级流水线(宏流水线)</strong> 由 N(N&gt;=2)个处理机通过存储器串行连接，每个处理机完成某项专门的任务，各个处理机所得到的结果需要存放到跟下一个处理机所共享的存储器里面。</p>
+<h2 id="流水线的分类"><a href="#流水线的分类" class="headerlink" title="流水线的分类"></a>流水线的分类</h2><p>根据流水线的实际应用，可以从不同角度进行分类。</p>
+<p><strong>静态流水线</strong>：在同一时间内只能按照一种运算的连接方式进行工作（一定是单功能）。<br><strong>动态流水线</strong>：在同一时间内允许按照多种不同运算的连接方式工作（一定是多功能）。</p>
+<p><strong>线性流水线</strong>：从输入到输出，每个功能段只允许经过一次，不存在反馈回路。<br><strong>非线性流水线</strong>：从输入到输出，某些功能段将数次通过流水线，存在反馈回路，常用于递归调用。</p>
+<p><strong>单功能流水线</strong>：只能实现某种固定的功能，比如加法运算。<br><strong>多功能流水线</strong>：各段可以进行不同的连接，通过不同的连接方式来实现不同的功能（资源利用率较高也更灵活，但控制更复杂）。</p>
+<h2 id="流水线的特点和工作原理"><a href="#流水线的特点和工作原理" class="headerlink" title="流水线的特点和工作原理"></a>流水线的特点和工作原理</h2><ul>
+<li><p>流水线中处理的必须是连续的任务。</p>
+</li>
+<li><p>在流水线每个操作部件的后面，都要有一个缓冲寄存器，这个缓冲寄存器用于保存本阶段的执行结果，以保证各个部件之间的速度是匹配的，以及各个部件独立、并行运行。</p>
+</li>
+<li><p>因为流水线的主要工作方式是把大的操作任务分解为多个独立的、小的操作部件，依靠多个操作部件并行工作来缩短程序执行时间的。因为流水线中各段的执行时间应该尽量相等，执行时间最长的一段将成为整个流水线的瓶颈。</p>
+</li>
+</ul>
+<img src='../../../../src/lsx_04.png'>
+
+<p>上面这张图是我画的抽象之后的典型 5 级 CPU 执行流水线，但这张图其实没有办法表述清楚“多道工序同时执行”这个流水线技术最重要的特征，所以下面我通过<code>时空图</code>来描述流水线的工作。流水线的处理方向与之相对应的是多个任务按照顺序挨个执行。<br><img src='../../../../src/lsx_05.png'><br>我们假设某个处理机的执行指令分成三个阶段，分别是取指、分析和执行，假设每个阶段执行需要时间都是 t,那么上面左侧的图片描述的指令顺序执行的时空图，上面右侧的图片描述的是指令流水线执行的时空图。<br>我们可以通过上面的图示看出，顺序执行 3 条指令，需要的时间是 9t，流水线方式执行需要的时间是 5t，流水线采用的执行方式其实就是取指、分析和执行三个阶段部件在同时并发的工作，在第 1 条指令的执行阶段，同时分析第 2 条指令，取第 3 条指令。</p>
+<p>如果不好理解的话，可以把这个场景类比为一个三个人 A\B\C 在对苹果进行操作的过程，其中 A 负责把苹果放入到水槽中，B 负责清洗水槽中的苹果，C 负责把水槽中的苹果捞起来装到袋子中，每次只能操作一个苹果。严格的顺序执行，类似于 A 在做“把第一个苹果放入到水槽中”这个动作的时候，B 和 C 处于等待的状态，当这个动作完成后，B 执行“清洗水槽中的这个苹果”这个操作，此时 A 处于无事可做的状态，C 处于等待的状态，当清洗完成后，C 开始执行“把水槽中的苹果捞起来装到袋子中”这个动作，此时 A 和 B 处于空闲的状态。</p>
+<img src='../../../../src/lsx_06.png'>
+
+<p>假设有 n 个苹果需要处理，每个苹果处理的三个阶段的单位时间都是 t，那么：</p>
+<p>顺序执行的工作方式需要的时间为：<code>n x 3 x t</code><br>流水线执行工作方式需要的时间可以这样计算：<code>3 x t + (n-1) x t</code></p>
+<p>这里在进行计算的时候，其实我们涉及到了多个参与量，它们包括<code>指令的数量</code>、<code>指令的执行阶段</code>、<code>每个指令执行阶段需要的单位时间</code>，在上面的案例中，指令的数量为 3 条，指令的执行阶段为 3 个，每个指令执行阶段需要的单位时间我们假设都是相等的。接下来，我们来看一个稍微复杂点的情况。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">假设：</span><br><span class="line">指令的数量(n)：4条</span><br><span class="line">指令的执行阶段(k)：4个</span><br><span class="line">每个指令执行阶段需要的单位时间：为t</span><br></pre></td></tr></table></figure>
+
+<img src='../../../../src/lsx_07.png'>
+
+<p>我们来看个更复杂的情况</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">假设：</span><br><span class="line">指令的数量(n)：3条</span><br><span class="line">指令的执行阶段(k)：4个</span><br><span class="line">每个指令执行阶段需要的单位时间：A(1t) B(3t) C(2t) D(1t)</span><br></pre></td></tr></table></figure>
+
+<img src='../../../../src/lsx_08.png'>
+
+<p>备注：Tk = n(t1 + t2 + t3 +..tk) + (n -1)max(t1,t2,···tk)</p>
+<p>由此，我们可以总结出一个指令流水线完成 n 个任务所需要总时间的计算公式：</p>
+<img src='../../../../src/lsx_09.png'>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$$ T_k = \sum_&#123;i=1&#125;^kt_i + (n -1 ) max(t_1,t_2,···，t_k) $$</span><br></pre></td></tr></table></figure>
+
+<hr>
+<img src='../../../../z.png' width="200px">
+
+<ul>
+<li>Posted by 博客园·<a target="_blank" rel="noopener" href="http://www.cnblogs.com/wendingding/">文顶顶</a> | <a target="_blank" rel="noopener" href="http://wendingding.com/">花田半亩</a></li>
+<li>原创文章，版权声明：自由转载-非商用-非衍生-保持署名 | <a target="_blank" rel="noopener" href="http://www.cnblogs.com/wendingding/">文顶顶</a></li>
+</ul>
+</div></article></div></main><footer><div class="paginator"><a href="/2021/03/28/%E6%9D%82%E8%B0%88%E4%B9%A6%E5%9D%8A-%E9%99%B7%E7%8E%8B%E4%BA%8E%E6%81%B6%E5%92%8C%E8%90%A5%E6%83%91%E8%AF%B8%E4%BE%AF/" class="next">下一篇</a></div><div class="copyright"><p>© 2015 - 2022 <a href="https://weibo.com/u/3800117445">文顶顶</a> &nbsp;☁ 全站字数统计 420.5k (字)</p></div></footer></div><script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" integrity="sha384-crwIf/BuaWM9rM65iM+dWFldgQ1Un8jWZMuh3puxb8TOY9+linwLoI7ZHZT+aekW" crossorigin="anonymous"></script></body></html>
